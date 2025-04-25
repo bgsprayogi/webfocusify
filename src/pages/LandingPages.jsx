@@ -202,56 +202,53 @@ const LandingPage = () => {
     <div className="w-screen h-screen absolute top-0 left-0 bg-gradient-to-b from-[#462E96] to-[#6149b1] flex flex-col">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 rounded-2xl shadow-lg left-1/2 -translate-x-1/2 w-9/10 z-50 px-6 md:px-10 py-4 mt-5 mx-auto max-w-7xl flex justify-between items-center transition-all duration-300 ${
-          scrolled
-            ? "bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white"
-            : "bg-[#6149b1] text-white"
-        }`}
-      >
-        <div className="flex items-center">
-          <img src={logo2} alt="Focusify Logo" className="w-10 h-10 object-contain rounded-full" />
-        </div>
-        <div className="hidden md:flex space-x-6">
-          <Link
-            to="/"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Home
-          </Link>
-          <Link
-            to="#"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Features
-          </Link>
-          <Link
-            to="#"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById("article")?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Article
-          </Link>
-        </div>
-        <a
-         href="http://localhost:8000/login"
-          className="bg-white hover:border-e-indigo-100 !text-black font-medium px-5 py-2 rounded-lg shadow-md transition duration-200"
-        >
-          Login
-        </a>
+  className={`fixed top-0 rounded-2xl shadow-lg left-1/2 -translate-x-1/2 w-9/10 z-50 px-6 md:px-10 py-4 mt-5 mx-auto max-w-7xl flex justify-between items-center transition-all duration-300 ${
+    scrolled
+      ? "bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white"
+      : "bg-[#6149b1] text-white"
+  }`}
+>
+  <div className="flex items-center">
+    <img src={logo2} alt="Focusify Logo" className="w-10 h-10 object-contain rounded-full" />
+  </div>
 
+  {/* Spacer kiri */}
+  <div className="flex-1" />
 
+  {/* Menu di tengah */}
+  <div className="hidden md:flex space-x-6 justify-center">
+    <Link
+      to="/"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" })
+      }
+    >
+      Home
+    </Link>
+    <Link
+      to="#"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })
+      }
+    >
+      Features
+    </Link>
+    <Link
+      to="#"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById("article")?.scrollIntoView({ behavior: "smooth" })
+      }
+    >
+      Article
+    </Link>
+  </div>
 
-
-
-      </nav>
+  {/* Spacer kanan */}
+  <div className="flex-1" />
+</nav>
 
       {/* Hero Section */}
       <div
