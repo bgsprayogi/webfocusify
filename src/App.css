@@ -1,0 +1,201 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  height: 290vh;
+} 
+.playstore-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 0.625rem 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  outline: 0;
+  transition: all  .2s ease;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+.playstore-button:hover {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.texts {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.text-1 {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-2 {
+  font-weight: 600;
+}
+nav a {
+  color: white !important; 
+}
+
+nav a:hover {
+  color: #ccc !important; 
+}
+/* From Uiverse.io by Creatlydev */ 
+.button {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+}
+
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.button:hover {
+  background-color: #22234f;
+}
+
+.button:hover .button__icon-wrapper {
+  color: #22234f;
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.button:hover .button__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.button:hover .button__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+/* From Uiverse.io by AlimurtuzaCodes */ 
+.btn {
+  border: none;
+  width: 15em;
+  height: 5em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #22234f;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+  fill: #AAAAAA;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg,#462E96,#140540);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 180px 0px #9917FF;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+} 
