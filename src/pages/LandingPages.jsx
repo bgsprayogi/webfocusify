@@ -6,6 +6,7 @@ import SplitText from "../components/SplitText";
 import BlurText from "../components/BlurText";
 import ImageSlider from "../components/ImageSlider";
 import FeatureSection from '../components/FeatureSection';
+import IntroductionSection from '../components/IntroductionSection';
 import logo2 from "../assets/logo2.png";
 import studyImage from "../assets/study1.webp";
 import studyImage2 from "../assets/study2.png";
@@ -122,7 +123,7 @@ const ArticleSection = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // ubah jadi 2 atau 3 jika layar besar
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
@@ -212,10 +213,8 @@ const LandingPage = () => {
     <img src={logo2} alt="Focusify Logo" className="w-10 h-10 object-contain rounded-full" />
   </div>
 
-  {/* Spacer kiri */}
   <div className="flex-1" />
 
-  {/* Menu di tengah */}
   <div className="hidden md:flex space-x-6 justify-center">
     <Link
       to="/"
@@ -246,7 +245,7 @@ const LandingPage = () => {
     </Link>
   </div>
 
-  {/* Spacer kanan */}
+  
   <div className="flex-1" />
 </nav>
 
@@ -256,10 +255,9 @@ const LandingPage = () => {
         className="w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-10 relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        {/* Background Wave */}
+       
         <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-        {/* Animated Content */}
         <div className="relative z-10 max-w-3xl text-center">
           <BlurText
             text="Focusify"
@@ -273,7 +271,7 @@ const LandingPage = () => {
             className="mt-7 text-lg md:text-xl text-white"
           />
        <div className="flex justify-center mt-8 space-x-4">
-  {/* Tombol Google Play */}
+  
   <a
     href="https://play.google.com/store/apps/details?id=com.focusify.app"
     className="bg-[#000000] hover:bg-[#000000] text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300"
@@ -294,7 +292,6 @@ const LandingPage = () => {
     </div>
   </a>
 
-  {/* Tombol Explore All */}
   <button
   className="button"
   style={{ "--clr": "#6149b1" }}
@@ -337,17 +334,18 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Features Section */}
+      <IntroductionSection />
+      
       <FeatureSection />
 
-      {/* Article Section */}
+      
       <ArticleSection />
 
-      {/* Find Us Section */}
+    
 
       <FindUsSection />
 
-      {/* Footer */}
+    
       <Footer/>
   
     </div>
