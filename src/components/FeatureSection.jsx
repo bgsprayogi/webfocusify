@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ScrollFloat from "../components/ScrollFloat";
 import Audio from "../assets/Audio.png";
 import Timer from "../assets/Timer.png";
 import Statistik from "../assets/Statistik.png";
 import { AnimatePresence, motion } from "framer-motion";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const features = [
   {
@@ -26,13 +28,23 @@ const features = [
 const FeatureSection = () => {
   const [selectedFeatureIndex, setSelectedFeatureIndex] = useState(0);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
+
   const handleFeatureClick = (index) => {
     setSelectedFeatureIndex(index);
   };
 
   return (
-    <div id="features" className="w-full bg-gradient-to-b from-[#17054e] to-[#462E96] py-20 px-6 md:px-16 text-white">
-      <div className="text-center mb-12">
+    <div
+      id="features"
+      className="w-full bg-gradient-to-b from-[#17054e] to-[#462E96] bg-local py-20 px-6 md:px-16 text-white"
+    >
+      <div className="text-center mb-12" data-aos="fade-down">
         <ScrollFloat
           animationDuration={1}
           ease="back.inOut(2)"
@@ -45,9 +57,12 @@ const FeatureSection = () => {
         </ScrollFloat>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10">
+      <div
+        className="flex flex-col md:flex-row items-center justify-center gap-10"
+        data-aos="zoom-in-up"
+      >
         {/* Gambar HP */}
-        <div className="w-[300px] md:w-[250px] relative">
+        <div className="w-[300px] md:w-[250px] relative" data-aos="fade-right">
           <AnimatePresence mode="wait">
             <motion.img
               key={features[selectedFeatureIndex].image}
@@ -76,6 +91,7 @@ const FeatureSection = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                data-aos="fade-left"
                 className={`cursor-pointer p-5 rounded-2xl shadow-md transition-all duration-300
                 ${isSelected
                   ? 'bg-gradient-to-r from-violet-200 to-violet-300 text-violet-900 ring-2 ring-violet-400/70 scale-105'

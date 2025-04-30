@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-spring/web": "^9.7.5",
     "@tailwindcss/vite": "^4.0.14",
+    "aos": "^2.3.4",
     "axios": "^1.8.3",
     "framer-motion": "^12.7.4",
     "gsap": "^3.12.7",
