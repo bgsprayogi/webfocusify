@@ -12,7 +12,6 @@ const HamburgerMenu = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // lock scroll when open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
@@ -34,7 +33,7 @@ const HamburgerMenu = () => {
       )}
 
       <div className="relative z-50" ref={menuRef}>
-        {/* tombol bundar dengan tiga garis */}
+        
         <button
           onClick={toggleMenu}
           aria-label="Toggle menu"

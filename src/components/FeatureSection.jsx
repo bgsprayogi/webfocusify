@@ -11,19 +11,19 @@ const features = [
   {
     title: 'Timer',
     description:
-      'Atur waktu belajar dan istirahatmu dengan teknik Pomodoro. Fokus selama sesi kerja, lalu ambil jeda sejenak untuk menyegarkan pikiran. Biar belajar jadi lebih efektif dan nggak bikin burnout.',
+      'Atur waktu belajar dan istirahatmu dengan teknik Pomodoro. Fokus selama sesi kerja, lalu ambil jeda sejenak untuk menyegarkan pikiran.',
     image: Timer,
   },
   {
     title: 'Ambient Sound',
     description:
-      'Dengan fitur timer belajar yang fleksibel dan pilihan ambient sound yang menenangkan, Focusify bikin sesi belajarmu jadi lebih terstruktur dan menyenangkan.',
+      'Dengan fitur timer belajar yang fleksibel dan pilihan ambient sound yang menenangkan, kamu bisa belajar dengan lebih fokus dan nyaman.',
     image: Audio,
   },
   {
     title: 'Statistik',
     description:
-      'Lihat pencapaian fokusmu dalam grafik dan angka! Fitur ini menunjukkan berapa banyak sesi Pomodoro yang sudah kamu selesaikan.',
+      'Pencapaian fokusmu dalam grafik dan angka! Fitur ini menunjukkan berapa banyak sesi Pomodoro yang sudah kamu selesaikan.',
     image: Statistik,
   },
 ];
