@@ -57,9 +57,11 @@ export default function FeatureSection() {
           Fitur apa saja?
         </ScrollFloat>
       </div>
+
       <div className="flex flex-row items-start justify-center gap-6 max-w-6xl mx-auto flex-nowrap">
+        {/* Gambar mockup */}
         <div
-          className="flex-shrink-0 w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5"
+          className="flex-shrink-0 w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5 pt-6 sm:pt-4 md:pt-0" // Tambahkan padding top hanya di mobile
           data-aos="fade-right"
         >
           <AnimatePresence mode="wait">
@@ -76,7 +78,7 @@ export default function FeatureSection() {
           </AnimatePresence>
         </div>
 
-        {/* 2. Daftar Fitur */}
+        {/* Daftar Fitur */}
         <div className="flex-shrink flex flex-col gap-4 w-3/5 sm:w-2/3 md:w-3/4 lg:w-4/5">
           {features.map((f, i) => {
             const isSel = selected === i;
