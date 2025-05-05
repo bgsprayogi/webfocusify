@@ -7,19 +7,18 @@ import BlurText from "../components/BlurText";
 import ImageSlider from "../components/ImageSlider";
 import FeatureSection from '../components/FeatureSection';
 import IntroductionSection from '../components/IntroductionSection';
+import HamburgerMenu from '../components/HamburgerMenu'; 
 import logo2 from "../assets/logo2.png";
-import studyImage from "../assets/study1.webp";
+import studyImage from "../assets/study1.webp"; 
 import studyImage2 from "../assets/study2.png";
 import studyImage3 from "../assets/study3.png";
-import taskIcon from "../assets/task.png";
-import dndIcon from "../assets/do-not-disturb.png";
-import soundIcon from "../assets/volume-up.png";
-import timerIcon from "../assets/hourglass.png";
-import heroImage from "../assets/herosection.jpg";
-import FindUsBg from "../assets/findsection.jpg";
+import FindWeb from "../assets/FindWeb.jpg";
+import FindMobile from "../assets/FindMobile.jpg";
 import FocusifyLogo from "../assets/focusify.png";
 import AgileLogo from "../assets/agile.png";
 import PensLogo from "../assets/pens.png";
+
+
 
 const Footer = () => {
   return (
@@ -39,7 +38,7 @@ const Footer = () => {
             <a href="" target="_blank" rel="noopener noreferrer">
           <img
             src={FocusifyLogo}
-            alt="Laras"
+            alt=""
             className="h-10 bg-white px-3 py-1 rounded-lg"
           />
         </a>
@@ -64,32 +63,50 @@ const Footer = () => {
 };
 
 const FindUsSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // 768px adalah breakpoint Tailwind untuk md
+    };
+
+    handleResize(); // Set on mount
+    window.addEventListener("resize", handleResize); // Update saat resize
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const backgroundImage = isMobile ? FindMobile : FindWeb;
+
   return (
     <div
-    className="w-full min-h-screen bg-gradient-to-b from-[#462E96] to-[#140540] text-white px-6 md:px-16 flex flex-col justify-center items-center text-center pt-2 bg-cover bg-center"
-    style={{ backgroundImage: `url(${FindUsBg})` }}
-  >
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-      Temukan Focusify di Play Store!
-    </h2>
-    <p className="text-base md:text-lg mb-8 max-w-xl">
-      Focusify juga hadir di Play Store, download sekarang agar kamu lebih mudah untuk mengakses Focusify kapan saja dan di mana saja!
-    </p>
-    <button
-  onClick={() =>
-    window.open("https://play.google.com/store/apps/details?id=com.focusify.app&hl=en-US&pli=1", "_blank")
-  }
-  className="btn flex items-center gap-2"
->
-  <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" className="sparkle">
-    <path d="M10,21.236L6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z" />
-  </svg>
-  <span className="text">Download Now!</span>
-</button>
-
-  </div>
+      className="w-full min-h-screen bg-gradient-to-b from-[#462E96] to-[#140540] text-white px-6 md:px-16 flex flex-col justify-center items-center text-center pt-2 bg-cover bg-center"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Temukan Focusify di Play Store!
+      </h2>
+      <p className="text-base md:text-lg mb-8 max-w-xl">
+        Focusify juga hadir di Play Store, download sekarang agar kamu lebih mudah untuk mengakses Focusify kapan saja dan di mana saja!
+      </p>
+      <button
+        onClick={() =>
+          window.open(
+            "https://play.google.com/store/apps/details?id=com.focusify.app&hl=en-US&pli=1",
+            "_blank"
+          )
+        }
+        className="btn flex items-center gap-2"
+      >
+        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" className="sparkle">
+          <path d="M10,21.236L6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z" />
+        </svg>
+        <span className="text">Download Now!</span>
+      </button>
+    </div>
   );
 };
+
 
 const articles = [
   {
@@ -159,7 +176,7 @@ const ArticleSection = () => {
 
         <Slider {...settings}>
   {articles.map((article, index) => (
-    <div key={index} className="px-4"> {/* padding antar slide */}
+    <div key={index} className="px-4">
       <div className="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 h-auto min-h-[450px]">
         
         <img src={article.image} alt={article.title} className="w-full h-52 object-cover" />
@@ -192,7 +209,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -203,59 +220,70 @@ const LandingPage = () => {
     <div className="w-screen h-screen absolute top-0 left-0 bg-gradient-to-b from-[#462E96] to-[#6149b1] flex flex-col">
       {/* Navbar */}
       <nav
-  className={`fixed top-0 rounded-2xl shadow-lg left-1/2 -translate-x-1/2 w-9/10 z-50 px-6 md:px-10 py-4 mt-5 mx-auto max-w-7xl flex justify-between items-center transition-all duration-300 ${
-    scrolled
-      ? "bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white"
-      : "bg-[#6149b1] text-white"
-  }`}
+className={`fixed top-0 left-1/2 -translate-x-1/2 mt-5 w-[90%] max-w-7xl z-50 px-4 md:px-10 py-4 rounded-2xl shadow-lg flex items-center transition-all duration-300 ${
+  scrolled
+    ? 'bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white'
+    : 'bg-[#6149b1] text-white'
+}`}
 >
-  <div className="flex items-center">
-    <img src={logo2} alt="Focusify Logo" className="w-10 h-10 object-contain rounded-full" />
-  </div>
-
-  <div className="flex-1" />
-
-  <div className="hidden md:flex space-x-6 justify-center">
-    <Link
-      to="/"
-      className="text-white hover:text-gray-300 transition duration-200"
-      onClick={() =>
-        document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" })
-      }
-    >
-      Home
-    </Link>
-    <Link
-      to="#"
-      className="text-white hover:text-gray-300 transition duration-200"
-      onClick={() =>
-        document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })
-      }
-    >
-      Features
-    </Link>
-    <Link
-      to="#"
-      className="text-white hover:text-gray-300 transition duration-200"
-      onClick={() =>
-        document.getElementById("article")?.scrollIntoView({ behavior: "smooth" })
-      }
-    >
-      Article
-    </Link>
-  </div>
-
-  
-  <div className="flex-1" />
+<div className="flex items-center space-x-2">
+  <img
+    src={logo2}
+    alt="Focusify Logo"
+    className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full"
+  />
+  <span className="text-lg md:text-xl font-bold">
+    Focusify
+  </span>
+</div>
+<div className="hidden md:flex flex-1 justify-center space-x-6 -ml-26">
+  <Link
+    to="/"
+    className="text-white hover:text-gray-300 transition duration-200"
+    onClick={() =>
+      document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
+    }
+  >
+    Home
+  </Link>
+  <Link
+    to="#"
+    className="text-white hover:text-gray-300 transition duration-200"
+    onClick={() =>
+      document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+    }
+  >
+    Features
+  </Link>
+  <Link
+    to="#"
+    className="text-white hover:text-gray-300 transition duration-200"
+    onClick={() =>
+      document.getElementById('article')?.scrollIntoView({ behavior: 'smooth' })
+    }
+  >
+    Article
+  </Link>
+</div>
+<div className="md:hidden absolute right-4">
+  <HamburgerMenu />
+</div>
 </nav>
+
+
+
 
       {/* Hero Section */}
       <div
         id="hero"
-        className="w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-10 relative overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+          className={`
+           w-full min-h-screen flex flex-col items-center justify-center text-center 
+            px-6 py-10 relative overflow-hidden 
+            bg-no-repeat bg-center 
+            bg-[url('/assets/HeroImageMobile.jpg')] sm:bg-[url('/assets/herosection.jpg')] 
+           bg-cover`}
       >
-       
+
         <div className="absolute inset-0 bg-black/50 z-0"></div>
 
         <div className="relative z-10 max-w-3xl text-center">
@@ -270,7 +298,7 @@ const LandingPage = () => {
             delay={150}
             className="mt-7 text-lg md:text-xl text-white"
           />
-       <div className="flex justify-center mt-8 space-x-4">
+      <div className="flex justify-center mt-8 space-x-4">
   
   <a
     href="https://play.google.com/store/apps/details?id=com.focusify.app"
@@ -327,7 +355,6 @@ const LandingPage = () => {
   </span>
   Explore All
 </button>
-
 </div>
 
 
