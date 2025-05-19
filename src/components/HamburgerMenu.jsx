@@ -34,55 +34,52 @@ const HamburgerMenu = () => {
 
       <div className="relative z-50" ref={menuRef}>
         
+        {/* Toggle Button */}
         <button
           onClick={toggleMenu}
           aria-label="Toggle menu"
-          className={`
-            w-12 h-12 rounded-full flex items-center justify-center
-            ${isOpen ? 'bg-white' : 'bg-[#EDEAFF]'} 
+          className="w-12 h-12 rounded-full flex items-center justify-center
             shadow-md focus:outline-none
-          `}
+            bg-gray-100 text-black dark:bg-gray-800 dark:text-white"
         >
           <div className="flex flex-col justify-between h-5">
-            {/* blok garis */}
-            {[0,1,2].map(i => (
+            {[0, 1, 2].map(i => (
               <span
                 key={i}
-                className={`block w-6 h-0.5 rounded-full
-                  ${isOpen ? 'bg-gray-500' : 'bg-gray-800'}
-                `}
+                className="block w-6 h-0.5 rounded-full bg-current"
               />
             ))}
           </div>
         </button>
 
-        {/* dropdown */}
+        {/* Dropdown Menu */}
         <div
           className={`
-            absolute right-0 top-full mt-2 w-48 bg-white text-black
+            absolute right-0 top-full mt-2 w-48
             shadow-lg rounded-md py-2 origin-top transform
             transition-all duration-300 ease-in-out
+            bg-white text-black dark:bg-gray-800 dark:text-white
             ${isOpen
               ? 'scale-y-100 opacity-100'
               : 'scale-y-0 opacity-0 pointer-events-none'}
           `}
         >
           <ul className="flex flex-col">
-            <li className="px-4 py-2 hover:bg-gray-100">
-              <button className="w-full text-left" onClick={() => handleNavClick('hero')}>
-                Home
-              </button>
-            </li>
-            <li className="px-4 py-2 hover:bg-gray-100">
-              <button className="w-full text-left" onClick={() => handleNavClick('features')}>
-                Features
-              </button>
-            </li>
-            <li className="px-4 py-2 hover:bg-gray-100">
-              <button className="w-full text-left" onClick={() => handleNavClick('article')}>
-                Article
-              </button>
-            </li>
+            {[
+              { id: 'hero', label: 'Home' },
+              { id: 'features', label: 'Features' },
+              { id: 'article', label: 'Article' }
+            ].map(item => (
+              <li key={item.id} className="px-4 py-1">
+                <button
+                  className="w-full text-left rounded-md px-4 py-2 transition-colors duration-200
+                             hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => handleNavClick(item.id)}
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
