@@ -76,10 +76,9 @@ const TimerPage = () => {
             }}
         >
             {/* Logo */}
-            <div className="absolute top-10 left-8 text-white text-4xl font-mono tracking-widest">
+            <div className="absolute top-6 left-6 text-white text-4xl font-mono tracking-widest">
                 FOCUSIFY
             </div>
-
 
 
             {/* Main vertical container */}
@@ -151,30 +150,29 @@ const TimerPage = () => {
 
 
             {/* Navigation Icons */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-blue-800/70 text-white flex gap-6 px-6 py-2 rounded-t-xl shadow-md">
+            <div className="absolute bottom-0 left-0 w-full bg-blue-800/70 text-white flex justify-around px-6 py-3 rounded-t-xl shadow-md md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:gap-6 md:px-6 md:py-2 md:rounded-t-xl">
                 {/* Home - Landing Page */}
                 <button onClick={() => window.location.href = '/'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7m-9 11v-6h4v6m5-6h2a2 2 0 002-2V7a2 2 0 00-.586-1.414l-8-8a2 2 0 00-2.828 0l-8 8A2 2 0 001 7v7a2 2 0 002 2h2" />
                     </svg>
                 </button>
 
                 {/* Daun - Realtime */}
                 <button onClick={() => window.location.href = '/realtime'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
                     </svg>
                 </button>
 
-
-
                 {/* Lampu - Timer */}
                 <button onClick={() => window.location.href = '/timerpage'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 2v2m6-2v2M4.22 4.22l1.42 1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8zM12 20v2m-6-2a6 6 0 0012 0" />
                     </svg>
                 </button>
             </div>
+
 
             {/* Settings icon */}
             <div className="absolute top-6 right-10 bg-blue-800/70 p-1 rounded-xl shadow-md text-white">
