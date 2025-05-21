@@ -60,14 +60,14 @@ const RealtimePage = () => {
                 backgroundPosition: "center",
             }}
         >
-            {/* Logo dan Quote */}
-            <div className="absolute top-6 left-0 right-0 flex flex-col items-center text-white">
-                <div className="text-2xl md:text-4xl font-mono tracking-widest">
-                    FOCUSIFY
-                </div>
-                <div className="text-xs md:text-xl italic text-center max-w-[250px] md:max-w-sm mt-2">
-                    "{quote}"
-                </div>
+            {/* Logo */}
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white text-2xl md:translate-x-0 md:left-6 md:text-4xl font-mono tracking-widest">
+                FOCUSIFY
+            </div>
+
+            {/* Quote Random */}
+            <div className="absolute top-[58px] left-1/2 -translate-x-1/2 text-white text-xs italic text-center max-w-[200px] md:top-6 md:left-auto md:right-6 md:translate-x-0 md:text-2xl md:text-right md:max-w-xs">
+                "{quote}"
             </div>
 
 
