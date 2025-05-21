@@ -61,17 +61,15 @@ const RealtimePage = () => {
             }}
         >
             {/* Logo */}
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white text-2xl md:translate-x-0 md:left-6 md:text-4xl font-mono tracking-widest">
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white text-2xl md:translate-x-0 md:left-6 md:text-left md:text-4xl font-mono tracking-widest">
                 FOCUSIFY
             </div>
 
             {/* Quote Random */}
-            <div className="absolute top-[58px] left-1/2 -translate-x-1/2 text-white text-xs italic text-center max-w-[200px] md:top-6 md:left-auto md:right-6 md:translate-x-0 md:text-2xl md:text-right md:max-w-xs">
+            <div className="absolute top-[58px] left-1/2 -translate-x-1/2 text-white text-xs italic text-center max-w-[200px] md:top-6 md:left-auto md:right-0 md:text-2xl md:text-right md:max-w-xs">
                 "{quote}"
             </div>
-
-
-
+            
             {/* Time Display */}
             <div className="flex flex-col items-center justify-center flex-grow text-white text-center mb-28 px-6">
                 <BlurText
