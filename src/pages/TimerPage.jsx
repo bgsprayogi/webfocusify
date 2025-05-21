@@ -131,7 +131,7 @@ const TimerPage = () => {
                     </div>
 
                     {/* Timer */}
-                    <h2 className="text-9xl font-bold">{formatTime(timeLeft)}</h2>
+                    <h2 className="text-8xl md:text-9xl font-bold">{formatTime(timeLeft)}</h2>
 
                     {/* Control buttons */}
                     <div className="flex space-x-4 items-center">
