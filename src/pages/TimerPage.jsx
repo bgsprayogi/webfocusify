@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
 import backgroundTimerMobile from "../assets/FindMobile.jpg";
 import AnimatedContent from "../components/AnimatedContent";
+import SettingTimer from "../components/SettingTimer"; // pastikan path-nya benar
 import { PencilSimple } from "phosphor-react";
 
 
@@ -17,26 +18,29 @@ const TimerPage = () => {
     const [customTitle, setCustomTitle] = useState('Apa yang mau kamu lakukan hari ini?');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
 
+    const [showSettings, setShowSettings] = useState(false);
+    const [customTimes, setCustomTimes] = useState({
+        fokus: 30,
+        istirahat: 5,
+        istirahatPanjang: 10,
+    });
+
+
     const toggleTimer = () => {
         setIsRunning((prev) => !prev);
-    };
-
-    const resetTimer = () => {
-        setIsRunning(false);
-        setTimeLeft(mode === 'fokus' ? 30 * 60 : 5 * 60);
     };
 
     const switchMode = (newMode) => {
         setMode(newMode);
         setIsRunning(false);
-        if (newMode === 'fokus') {
-            setTimeLeft(30 * 60);
-        } else if (newMode === 'istirahat') {
-            setTimeLeft(5 * 60);
-        } else {
-            setTimeLeft(10 * 60); // istirahatPanjang
-        }
+        setTimeLeft(customTimes[newMode] * 60);
     };
+
+    const resetTimer = () => {
+        setIsRunning(false);
+        setTimeLeft(customTimes[mode] * 60);
+    };
+
 
 
     useEffect(() => {
@@ -162,14 +166,14 @@ const TimerPage = () => {
                 </button>
 
                 {/* Daun - Realtime */}
-                <button onClick={() => window.location.href = '/realtime'}className="hover:scale-110 transition">
+                <button onClick={() => window.location.href = '/realtime'} className="hover:scale-110 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
                     </svg>
                 </button>
 
                 {/* Lampu - Timer */}
-                <button onClick={() => window.location.href = '/timerpage'}className="hover:scale-110 transition">
+                <button onClick={() => window.location.href = '/timerpage'} className="hover:scale-110 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 2v2m6-2v2M4.22 4.22l1.42 1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8zM12 20v2m-6-2a6 6 0 0012 0" />
                     </svg>
@@ -178,8 +182,8 @@ const TimerPage = () => {
 
 
             {/* Settings icon */}
-            <div className="absolute top-6 right-10 bg-blue-800/70 p-1 rounded-xl shadow-md text-white">
-                <button>
+            <div className="absolute top-6 right-10 bg-blue-800/70 p-1 rounded-xl shadow-md text-white z-30">
+                <button onClick={() => setShowSettings(true)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -196,6 +200,31 @@ const TimerPage = () => {
                     </svg>
                 </button>
             </div>
+
+            {/* Settings Panel - Slide from Right */}
+            <div
+                className={`fixed top-0 right-0 h-full w-full sm:w-[90%] sm:max-w-[400px] bg-white/20 backdrop-blur shadow-lg z-40 transform transition-transform duration-300 ease-in-out ${showSettings ? 'translate-x-0' : 'translate-x-full'
+                    }`}
+            >
+                <div className="p-4">
+                    <SettingTimer
+                        defaultTimes={customTimes}
+                        onSave={(newTimes) => {
+                            setCustomTimes(newTimes);
+                            setTimeLeft(newTimes[mode] * 60);
+                            setShowSettings(false);
+                        }}
+                    />
+                    <button
+                        onClick={() => setShowSettings(false)}
+                        className="text-sm text-blue-700 underline mb-4"
+                    >
+                        Tutup
+                    </button>
+                    
+                </div>
+            </div>
+
 
         </div >
     );
