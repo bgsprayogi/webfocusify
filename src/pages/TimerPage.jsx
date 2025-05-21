@@ -206,7 +206,7 @@ const TimerPage = () => {
                 className={`fixed top-0 right-0 h-full w-full sm:w-[90%] sm:max-w-[400px] bg-white/20 backdrop-blur shadow-lg z-40 transform transition-transform duration-300 ease-in-out ${showSettings ? 'translate-x-0' : 'translate-x-full'
                     }`}
             >
-                <div className="p-4">
+                <div className="p-10">
                     <SettingTimer
                         defaultTimes={customTimes}
                         onSave={(newTimes) => {
