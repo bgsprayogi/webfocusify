@@ -30,58 +30,41 @@ const SettingTimer = ({ defaultTimes, onSave }) => {
 
     return (
         <div className="text-white w-full">
-            <h2 className="text-2xl font-semibold mb-4">Atur Waktu</h2>
+            <h2 className="text-2xl font-bold mb-20">Atur Waktu</h2>
 
             {/* Preset Buttons */}
-            <div className="flex justify-center gap-4 mb-6">
-                <button
-                    className={`px-4 py-2 rounded-lg border ${
-                        selectedPreset === "panjang"
-                            ? "bg-blue-600 text-white"
-                            : "bg-transparent border-white text-white"
-                    }`}
-                    onClick={() => applyPreset("panjang")}
-                >
-                    Sesi Panjang
-                </button>
-                <button
-                    className={`px-4 py-2 rounded-lg border ${
-                        selectedPreset === "sedang"
-                            ? "bg-blue-600 text-white"
-                            : "bg-transparent border-white text-white"
-                    }`}
-                    onClick={() => applyPreset("sedang")}
-                >
-                    Sesi Sedang
-                </button>
-                <button
-                    className={`px-4 py-2 rounded-lg border ${
-                        selectedPreset === "pendek"
-                            ? "bg-blue-600 text-white"
-                            : "bg-transparent border-white text-white"
-                    }`}
-                    onClick={() => applyPreset("pendek")}
-                >
-                    Sesi Pendek
-                </button>
+            <div className="flex justify-center gap-3 mb-6 ">
+                {["panjang", "sedang", "pendek"].map((preset) => (
+                    <button
+                        key={preset}
+                        className={`px-4 py-2 rounded-lg border font-medium transition duration-200
+                            ${selectedPreset === preset
+                                ? "bg-blue-900 text-white border-black-600"
+                                : "bg-white/10 border-white hover:bg-white/20"
+                            }`}
+                        onClick={() => applyPreset(preset)}
+                    >
+                        Sesi {preset.charAt(0).toUpperCase() + preset.slice(1)}
+                    </button>
+                ))}
             </div>
 
             {/* Manual Input */}
-            <div className="space-y-4">
+            <div className="space-y-4 text-sm">
                 <label className="block">
-                    Fokus (menit)
+                    <span className="block mb-1 font-medium">Fokus (menit)</span>
                     <input
                         type="number"
                         value={fokusTime}
                         onChange={(e) => {
                             setFokusTime(e.target.value);
-                            setSelectedPreset(null); // batal preset
+                            setSelectedPreset(null);
                         }}
-                        className="w-full mt-1 p-2 rounded-lg text-black"
+                        className="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </label>
                 <label className="block">
-                    Istirahat (menit)
+                    <span className="block mb-1 font-medium">Istirahat (menit)</span>
                     <input
                         type="number"
                         value={istirahatTime}
@@ -89,11 +72,11 @@ const SettingTimer = ({ defaultTimes, onSave }) => {
                             setIstirahatTime(e.target.value);
                             setSelectedPreset(null);
                         }}
-                        className="w-full mt-1 p-2 rounded-lg text-black"
+                        className="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </label>
                 <label className="block">
-                    Istirahat Panjang (menit)
+                    <span className="block mb-1 font-medium">Istirahat Panjang (menit)</span>
                     <input
                         type="number"
                         value={istirahatPanjangTime}
@@ -101,7 +84,7 @@ const SettingTimer = ({ defaultTimes, onSave }) => {
                             setIstirahatPanjangTime(e.target.value);
                             setSelectedPreset(null);
                         }}
-                        className="w-full mt-1 p-2 rounded-lg text-black"
+                        className="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </label>
             </div>
@@ -109,7 +92,7 @@ const SettingTimer = ({ defaultTimes, onSave }) => {
             {/* Save Button */}
             <button
                 onClick={handleSave}
-                className="mt-6 w-full bg-blue-700 py-2 rounded-lg hover:bg-blue-800 transition"
+                className="mt-6 w-full bg-blue-700 py-3 rounded-lg text-white font-semibold hover:bg-blue-800 transition"
             >
                 Simpan
             </button>
