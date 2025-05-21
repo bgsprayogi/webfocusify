@@ -158,28 +158,26 @@ const TimerPage = () => {
 
             {/* Navigation Icons */}
             <div className="absolute bottom-0 left-0 w-full max-w-md mx-auto flex justify-around px-6 py-3  md:mb-0 bg-blue-800/70 text-white rounded-t-xl shadow-md md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:gap-6 md:px-6 md:py-2 md:rounded-t-xl">
-                {/* Home - Landing Page */}
-                <button onClick={() => window.location.href = '/'} className="hover:scale-110 transition">
+
+                {/* Home */}
+                <button onClick={() => window.location.href = '/'} className="hover:scale-110 transition" title="Beranda">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7m-9 11v-6h4v6m5-6h2a2 2 0 002-2V7a2 2 0 00-.586-1.414l-8-8a2 2 0 00-2.828 0l-8 8A2 2 0 001 7v7a2 2 0 002 2h2" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9.75L12 3l9 6.75V20a1.25 1.25 0 01-1.25 1.25H4.25A1.25 1.25 0 013 20V9.75z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 21V12h6v9" />
                     </svg>
                 </button>
-
-                {/* Daun - Realtime */}
-                <button onClick={() => window.location.href = '/realtime'} className="hover:scale-110 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
-                    </svg>
+                {/* Realtime */}
+                <button onClick={() => window.location.href = '/realtime'} className="hover:scale-110 transition" title="Realtime Calm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf-icon lucide-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg>
                 </button>
 
-                {/* Lampu - Timer */}
-                <button onClick={() => window.location.href = '/timerpage'} className="hover:scale-110 transition">
+                {/* Timer */}
+                <button onClick={() => window.location.href = '/timerpage'} className="hover:scale-110 transition" title="Timer Fokus">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 2v2m6-2v2M4.22 4.22l1.42 1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8zM12 20v2m-6-2a6 6 0 0012 0" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3M15 3H9M12 22a9 9 0 100-18 9 9 0 000 18z" />
                     </svg>
                 </button>
             </div>
-
 
             {/* Settings icon */}
             <div className="absolute top-6 right-10 bg-blue-800/70 p-1 rounded-xl shadow-md text-white z-30">
