@@ -149,12 +149,11 @@ const TimerPage = () => {
                             ↻
                         </button>
                     </div>
-
                 </div>
             </AnimatedContent>
 
             {/* Navigation Icons */}
-            <div className="absolute bottom-0 left-0 w-full max-w-md mx-auto flex justify-around px-6 py-3 bg-blue-800/70 text-white rounded-t-xl shadow-md md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:gap-6 md:px-6 md:py-2 md:rounded-t-xl">
+            <div className="absolute bottom-0 left-0 w-full max-w-md mx-auto flex justify-around px-6 py-3 mb-7 bg-blue-800/70 text-white rounded-t-xl shadow-md md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:gap-6 md:px-6 md:py-2 md:rounded-t-xl">
                 {/* Home - Landing Page */}
                 <button onClick={() => window.location.href = '/'} className="hover:scale-110 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
