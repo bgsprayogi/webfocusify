@@ -60,16 +60,16 @@ const RealtimePage = () => {
                 backgroundPosition: "center",
             }}
         >
-            {/* Logo */}
-            <div className="absolute top-6 left-6 text-white text-2xl md:text-4xl font-mono tracking-widest">
-                FOCUSIFY
+            {/* Logo dan Quote */}
+            <div className="absolute top-6 left-0 right-0 flex flex-col items-center text-white">
+                <div className="text-2xl md:text-4xl font-mono tracking-widest">
+                    FOCUSIFY
+                </div>
+                <div className="text-xs md:text-xl italic text-center max-w-[250px] md:max-w-sm mt-2">
+                    "{quote}"
+                </div>
             </div>
 
-
-            {/* Quote Random - pojok kanan atas */}
-            <div className="absolute top-6 right-6 text-white text-xs md:text-2xl italic text-right max-w-[200px] md:max-w-xs">
-                "{quote}"
-            </div>
 
 
             {/* Time Display */}
@@ -100,14 +100,14 @@ const RealtimePage = () => {
                 </button>
 
                 {/* Daun - Realtime */}
-                <button onClick={() => window.location.href = '/realtime'}className="hover:scale-110 transition">
+                <button onClick={() => window.location.href = '/realtime'} className="hover:scale-110 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
                     </svg>
                 </button>
 
                 {/* Lampu - Timer */}
-                <button onClick={() => window.location.href = '/timerpage'}className="hover:scale-110 transition">
+                <button onClick={() => window.location.href = '/timerpage'} className="hover:scale-110 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 2v2m6-2v2M4.22 4.22l1.42 1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8zM12 20v2m-6-2a6 6 0 0012 0" />
                     </svg>

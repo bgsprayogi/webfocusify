@@ -153,8 +153,6 @@ const TimerPage = () => {
                 </div>
             </AnimatedContent>
 
-
-
             {/* Navigation Icons */}
             <div className="absolute bottom-0 left-0 w-full max-w-md mx-auto flex justify-around px-6 py-3 bg-blue-800/70 text-white rounded-t-xl shadow-md md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:gap-6 md:px-6 md:py-2 md:rounded-t-xl">
                 {/* Home - Landing Page */}
