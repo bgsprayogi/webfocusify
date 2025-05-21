@@ -85,7 +85,7 @@ const RealtimePage = () => {
                     delay={200}
                     config={{ tension: 100, friction: 40 }}
                 >
-                    <h2 className="text-6xl md:text-9xl font-bold">{formatTime(currentTime)}</h2>
+                    <h2 className="text-7xl md:text-9xl font-bold">{formatTime(currentTime)}</h2>
                 </AnimatedContent>
             </div>
 
