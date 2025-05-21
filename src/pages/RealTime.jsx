@@ -38,8 +38,8 @@ const RealtimePage = () => {
     const formatTime = (time) => {
         const hours = time.getHours().toString().padStart(2, '0');
         const minutes = time.getMinutes().toString().padStart(2, '0');
-        const seconds = time.getSeconds().toString().padStart(2, '0');
-        return `${hours}:${minutes}:${seconds}`;
+
+        return `${hours}:${minutes}`;
     };
 
 
@@ -61,21 +61,23 @@ const RealtimePage = () => {
             }}
         >
             {/* Logo */}
-            <div className="absolute top-10 left-8 text-white text-4xl font-mono tracking-widest">
+            <div className="absolute top-6 left-6 text-white text-2xl md:text-4xl font-mono tracking-widest">
                 FOCUSIFY
             </div>
 
+
             {/* Quote Random - pojok kanan atas */}
-            <div className="absolute top-10 right-10 text-white text-sm md:text-2xl italic text-right max-w-xs">
+            <div className="absolute top-6 right-6 text-white text-xs md:text-2xl italic text-right max-w-[200px] md:max-w-xs">
                 "{quote}"
             </div>
 
+
             {/* Time Display */}
-            <div className="flex flex-col items-center justify-center flex-grow text-white text-center mb-20">
+            <div className="flex flex-col items-center justify-center flex-grow text-white text-center mb-28 px-6">
                 <BlurText
                     text={getGreeting()}
                     delay={150}
-                    className="mt-6 text-4xl font-serif text-white mb-4"
+                    className="mt-6 text-xl md:text-4xl font-serif text-white mb-4"
                 />
                 <AnimatedContent
                     distance={50}
@@ -83,9 +85,10 @@ const RealtimePage = () => {
                     delay={200}
                     config={{ tension: 100, friction: 40 }}
                 >
-                    <h2 className="text-9xl font-bold p-">{formatTime(currentTime)}</h2>
+                    <h2 className="text-6xl md:text-9xl font-bold">{formatTime(currentTime)}</h2>
                 </AnimatedContent>
             </div>
+
 
             {/* Navigation Icons */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-blue-800/70 text-white flex gap-6 px-6 py-2 rounded-t-xl shadow-md">
@@ -102,7 +105,6 @@ const RealtimePage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
                     </svg>
                 </button>
-
 
 
                 {/* Lampu - Timer */}
