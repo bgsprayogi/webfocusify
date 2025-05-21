@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
 import backgroundTimerMobile from "../assets/FindMobile.jpg";
 import AnimatedContent from "../components/AnimatedContent";
@@ -40,7 +41,6 @@ const RealtimePage = () => {
         const seconds = time.getSeconds().toString().padStart(2, '0');
         return `${hours}:${minutes}:${seconds}`;
     };
-
 
 
     const getGreeting = () => {
@@ -89,25 +89,19 @@ const RealtimePage = () => {
 
             {/* Navigation Icons */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-blue-800/70 text-white flex gap-6 px-6 py-2 rounded-t-xl shadow-md">
-                {/* Home */}
-                <button onClick={() => (window.location.href = "/")}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7m-9 11v-6h4v6m5-6h2a2 2 0 002-2V7a2 2 0 00-.586-1.414l-8-8a2 2 0 00-2.828 0l-8 8A2 2 0 001 7v7a2 2 0 002 2h2" />
-                    </svg>
+                {/* Home - Landing Page */}
+                <button onClick={() => navigate('/')}>
+                    <House size={32} />
                 </button>
 
-                {/* Realtime */}
-                <button onClick={() => (window.location.href = "/realtime")}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C7 2 3 6 3 11c0 4.418 3.582 8 8 8 5 0 9-4 9-9 0-4-4-8-8-8zM5 15c1.5-2 3.5-3 6-3s4.5 1 6 3" />
-                    </svg>
+                {/* Realtime Page */}
+                <button onClick={() => navigate('/realtime')}>
+                    <GlobeHemisphereWest size={32} />
                 </button>
 
-                {/* Timer */}
-                <button onClick={() => (window.location.href = "/timerpage")}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 2v2m6-2v2M4.22 4.22l1.42 1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8zM12 20v2m-6-2a6 6 0 0012 0" />
-                    </svg>
+                {/* Timer Page (this page) */}
+                <button onClick={() => navigate('/timerpage')}>
+                    <Timer size={32} />
                 </button>
             </div>
         </div>
