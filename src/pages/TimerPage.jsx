@@ -76,10 +76,9 @@ const TimerPage = () => {
             }}
         >
             {/* Logo */}
-            <div className="absolute top-6 left-6 text-white text-4xl font-mono tracking-widest">
+            <div className="absolute top-6 left-6 text-white text-2xl md:text-4xl font-mono tracking-widest">
                 FOCUSIFY
             </div>
-
 
             {/* Main vertical container */}
             <AnimatedContent
