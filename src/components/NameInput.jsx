@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimatedContent from "../components/AnimatedContent"; 
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
-import backgroundTimerMobile from "../assets/findMobile.jpg";
+import backgroundTimerMobile from "../assets/FindMobile.jpg";
 
 const NameInput = () => {
     const [name, setName] = useState("");

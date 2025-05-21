@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
-import backgroundTimerMobile from "../assets/findMobile.jpg";
+import backgroundTimerMobile from "../assets/FindMobile.jpg";
 import AnimatedContent from "../components/AnimatedContent";
 import BlurText from "../components/BlurText";
 

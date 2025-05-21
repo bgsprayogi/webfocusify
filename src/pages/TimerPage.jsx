@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
-import backgroundTimerMobile from "../assets/findMobile.jpg";
+import backgroundTimerMobile from "../assets/FindMobile.jpg";
 import AnimatedContent from "../components/AnimatedContent";
 import { PencilSimple } from "phosphor-react";
 
