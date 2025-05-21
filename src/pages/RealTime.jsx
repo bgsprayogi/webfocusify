@@ -66,7 +66,7 @@ const RealtimePage = () => {
             </div>
 
             {/* Quote Random */}
-            <div className="absolute top-[58px] left-1/2 -translate-x-1/2 text-white text-xl italic text-center max-w-[200px] md:top-6 md:left-auto md:right-0 md:text-2xl md:text-right md:max-w-xs">
+            <div className="absolute top-[58px] left-1/2 -translate-x-1/2 text-white text-xl italic text-center max-w-[200px] md:top-6 md:left-270 md:right-0 md:text-2xl md:text-right md:max-w-xs">
                 "{quote}"
             </div>
 
