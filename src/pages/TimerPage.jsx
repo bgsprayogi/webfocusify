@@ -215,7 +215,7 @@ const TimerPage = () => {
                     />
                     <button
                         onClick={() => setShowSettings(false)}
-                        className="text-sm text-blue-700 underline mb-4"
+                        className="text-sm text-blue-700 underline mb-4 mt-3 "
                     >
                         Tutup
                     </button>
