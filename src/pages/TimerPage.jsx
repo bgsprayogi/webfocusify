@@ -43,6 +43,9 @@ const TimerPage = () => {
     };
 
     const handleAutoSwitch = () => {
+        // buat objek audio
+        const notifSound = new Audio('src/assets/sounds/notif.mp3'); 
+        notifSound.play(); // mainkan suara
         if (mode === 'fokus') {
             toast.success('🎯 Waktu Fokus selesai! Saatnya istirahat.', {
                 duration: 5000,
@@ -77,7 +80,7 @@ const TimerPage = () => {
             setMode('fokus');
             setTimeLeft(customTimes.fokus * 60);
             setIsRunning(true);
-        } 
+        }
     };
 
 
@@ -122,7 +125,7 @@ const TimerPage = () => {
         >
             <div>
                 <Toaster position="top-center" reverseOrder={false} />
-                
+
             </div>
 
             {/* Logo */}
