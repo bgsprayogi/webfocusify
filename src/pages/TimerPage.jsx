@@ -44,7 +44,7 @@ const TimerPage = () => {
 
     const handleAutoSwitch = () => {
         // buat objek audio
-        const notifSound = new Audio('src/assets/sounds/notif.mp3'); 
+        const notifSound = new Audio('/sounds/notif.mp3'); 
         notifSound.play(); // mainkan suara
         if (mode === 'fokus') {
             toast.success('🎯 Waktu Fokus selesai! Saatnya istirahat.', {
