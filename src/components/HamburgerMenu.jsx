@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   // close on outside click
   useEffect(() => {
@@ -23,6 +25,11 @@ const HamburgerMenu = () => {
     setIsOpen(false);
   };
 
+  const handlePomodoroClick = () => {
+    navigate('/NameInput');
+    setIsOpen(false);
+  };
+
   return (
     <>
       {isOpen && (
@@ -33,8 +40,6 @@ const HamburgerMenu = () => {
       )}
 
       <div className="relative z-50" ref={menuRef}>
-        
-        {/* Toggle Button */}
         <button
           onClick={toggleMenu}
           aria-label="Toggle menu"
@@ -52,7 +57,6 @@ const HamburgerMenu = () => {
           </div>
         </button>
 
-        {/* Dropdown Menu */}
         <div
           className={`
             absolute right-0 top-full mt-2 w-48
@@ -73,13 +77,28 @@ const HamburgerMenu = () => {
               <li key={item.id} className="px-4 py-1">
                 <button
                   className="w-full text-left rounded-md px-4 py-2 transition-colors duration-200
-                             hover:bg-gray-100 dark:hover:bg-gray-700"
+                          hover:bg-gray-100 dark:hover:bg-gray-700"
                   onClick={() => handleNavClick(item.id)}
                 >
                   {item.label}
                 </button>
               </li>
             ))}
+
+            {/* Pomodoro menu */}
+
+            <li className="px-4 py-1">
+              <button
+                className="w-full text-left rounded-md px-4 py-2 transition-colors duration-200
+                bg-white text-black shadow
+                hover:bg-gray-200 dark:bg-white dark:text-black"
+                onClick={handlePomodoroClick}
+              >
+                Pomodoro
+              </button>
+            </li>
+
+
           </ul>
         </div>
       </div>
