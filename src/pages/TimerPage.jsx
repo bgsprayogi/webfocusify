@@ -148,11 +148,11 @@ const TimerPage = () => {
                                 value={customTitle}
                                 onChange={(e) => setCustomTitle(e.target.value)}
                                 onBlur={() => setIsEditingTitle(false)}
-                                className="bg-transparent border-b border-white text-white placeholder-white text-center focus:outline-none"
+                                className="bg-transparent border-b border-white text-white  placeholder-white text-center focus:outline-none"
                                 autoFocus
                             />
                         ) : (
-                            <p className="text-2xl md:text-base flex items-center gap-2">
+                            <p className="text-xl md:text-base flex items-center gap-2">
                                 {customTitle}{' '}
                                 <button onClick={() => setIsEditingTitle(true)}>
                                     <PencilSimple size={20} />
@@ -178,7 +178,7 @@ const TimerPage = () => {
                     </div>
 
                     {/* Timer */}
-                    <h2 className="text-8xl md:text-9xl font-bold">{formatTime(timeLeft)}</h2>
+                    <h2 className="text-8xl md:text-9xl font-bold mb-15">{formatTime(timeLeft)}</h2>
 
                     {/* Control buttons */}
                     <div className="flex space-x-4 items-center">
