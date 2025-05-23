@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import backgroundTimerDesktop from "../assets/backgroundTimer.jpg";
 import backgroundTimerMobile from "../assets/FindMobile.jpg";
 import AnimatedContent from "../components/AnimatedContent";
+import { Toaster, toast } from 'react-hot-toast';
 import SettingTimer from "../components/SettingTimer"; // pastikan path-nya benar
 import { PencilSimple } from "phosphor-react";
 
@@ -41,6 +42,44 @@ const TimerPage = () => {
         setTimeLeft(customTimes[mode] * 60);
     };
 
+    const handleAutoSwitch = () => {
+        if (mode === 'fokus') {
+            toast.success('🎯 Waktu Fokus selesai! Saatnya istirahat.', {
+                duration: 5000,
+                position: 'top-center',
+                style: {
+                    background: '#2563eb', // biru
+                    color: 'white',
+                    fontWeight: 'bold',
+                    fontSize: '16px',
+                    borderRadius: '10px',
+                    padding: '12px 20px',
+                    boxShadow: '0 4px 14px rgba(37, 99, 235, 0.6)',
+                },
+            });
+            setMode('istirahat');
+            setTimeLeft(customTimes.istirahat * 60);
+            setIsRunning(true);  // langsung lanjut auto play
+        } else if (mode === 'istirahat') {
+            toast.success('☕ Waktu Istirahat selesai! Yuk lanjut fokus.', {
+                duration: 4000,
+                position: 'top-center',
+                style: {
+                    background: '#059669', // hijau
+                    color: 'white',
+                    fontWeight: 'bold',
+                    fontSize: '16px',
+                    borderRadius: '10px',
+                    padding: '12px 20px',
+                    boxShadow: '0 4px 14px rgba(5, 150, 105, 0.6)',
+                },
+            });
+            setMode('fokus');
+            setTimeLeft(customTimes.fokus * 60);
+            setIsRunning(true);
+        } 
+    };
+
 
 
     useEffect(() => {
@@ -49,6 +88,7 @@ const TimerPage = () => {
                 setTimeLeft((prev) => {
                     if (prev <= 1) {
                         clearInterval(timerRef.current);
+                        handleAutoSwitch(); // ← panggil di sini
                         return 0;
                     }
                     return prev - 1;
@@ -58,7 +98,8 @@ const TimerPage = () => {
             clearInterval(timerRef.current);
         }
         return () => clearInterval(timerRef.current);
-    }, [isRunning]);
+    }, [isRunning, mode, customTimes]);
+
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60).toString().padStart(2, '0');
@@ -79,6 +120,11 @@ const TimerPage = () => {
                 backgroundPosition: "center",
             }}
         >
+            <div>
+                <Toaster position="top-center" reverseOrder={false} />
+                
+            </div>
+
             {/* Logo */}
             <div className="absolute top-6 left-6 text-white text-2xl md:text-4xl font-mono tracking-widest">
                 FOCUSIFY
@@ -126,14 +172,7 @@ const TimerPage = () => {
                         >
                             Istirahat
                         </button>
-                        <button
-                            className={`px-5 py-3 rounded-full border text-sm md:text-base ${mode === 'istirahatPanjang' ? 'bg-blue-700 text-black' : 'border-white text-white'}`}
-                            onClick={() => switchMode('istirahatPanjang')}
-                        >
-                            Istirahat Panjang
-                        </button>
                     </div>
-
 
                     {/* Timer */}
                     <h2 className="text-8xl md:text-9xl font-bold">{formatTime(timeLeft)}</h2>

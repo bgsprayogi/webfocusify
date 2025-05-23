@@ -75,18 +75,6 @@ const SettingTimer = ({ defaultTimes, onSave }) => {
                         className="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </label>
-                <label className="block">
-                    <span className="block mb-1 font-medium">Istirahat Panjang (menit)</span>
-                    <input
-                        type="number"
-                        value={istirahatPanjangTime}
-                        onChange={(e) => {
-                            setIstirahatPanjangTime(e.target.value);
-                            setSelectedPreset(null);
-                        }}
-                        className="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </label>
             </div>
 
             {/* Save Button */}
