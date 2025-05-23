@@ -94,11 +94,9 @@ const HamburgerMenu = () => {
                 hover:bg-gray-200 dark:bg-white dark:text-black"
                 onClick={handlePomodoroClick}
               >
-                Pomodoro
+                Coba Pomodoro
               </button>
             </li>
-
-
           </ul>
         </div>
       </div>
