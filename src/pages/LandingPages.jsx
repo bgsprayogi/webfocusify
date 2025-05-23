@@ -6,6 +6,7 @@ import SplitText from "../components/SplitText";
 import BlurText from "../components/BlurText";
 import ImageSlider from "../components/ImageSlider";
 import FeatureSection from '../components/FeatureSection';
+import PreviewSection from '../components/PreviewSection';
 import IntroductionSection from '../components/IntroductionSection';
 import HamburgerMenu from '../components/HamburgerMenu';
 import logo2 from "../assets/logo2.png";
@@ -174,35 +175,35 @@ const ArticleSection = () => {
           Article
         </ScrollFloat>
 
-        <Slider {...settings}>
-          {articles.map((article, index) => (
-            <div key={index} className="px-4">
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 h-auto min-h-[450px]">
-
-                <img src={article.image} alt={article.title} className="w-full h-52 object-cover" />
-                <div className="p-6 text-black">
-                  <p className="text-gray-500 text-sm">{article.date}</p>
-                  <h3 className="text-xl font-semibold mt-2">{article.title}</h3>
-                  <p className="text-sm mt-2">{article.description}</p>
-                  <a
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClickCapture={(e) => e.stopPropagation()}
-                    style={{ color: '#4f46e5' }} /* Force indigo-600 color */
-                    className="!text-indigo-600 font-medium mt-4 inline-block hover:!text-indigo-800 hover:underline"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+          <Slider {...settings}>
+    {articles.map((article, index) => (
+      <div key={index} className="px-4">
+        <div className="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 h-auto min-h-[450px]">
+          
+          <img src={article.image} alt={article.title} className="w-full h-52 object-cover" />
+          <div className="p-6 text-black">
+            <p className="text-gray-500 text-sm">{article.date}</p>
+            <h3 className="text-xl font-semibold mt-2">{article.title}</h3>
+            <p className="text-sm mt-2">{article.description}</p>
+            <a
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClickCapture={(e) => e.stopPropagation()}
+              style={{ color: '#4f46e5' }} /* Force indigo-600 color */
+              className="!text-indigo-600 font-medium mt-4 inline-block hover:!text-indigo-800 hover:underline"
+            >
+              Baca Selengkapnya
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    ))}
+  </Slider>
+        </div>
+      </div>
+    );
+  };
 
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -220,54 +221,69 @@ const LandingPage = () => {
     <div className="w-screen h-screen absolute top-0 left-0 bg-gradient-to-b from-[#462E96] to-[#6149b1] flex flex-col">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-1/2 -translate-x-1/2 mt-5 w-[90%] max-w-7xl z-50 px-4 md:px-10 py-4 rounded-2xl shadow-lg flex items-center transition-all duration-300 ${scrolled
-            ? 'bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white'
-            : 'bg-[#6149b1] text-white'
-          }`}
-      >
-        <div className="flex items-center space-x-2">
-          <img
-            src={logo2}
-            alt="Focusify Logo"
-            className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full"
-          />
-          <span className="text-lg md:text-xl font-bold">
-            Focusify
-          </span>
-        </div>
-        <div className="hidden md:flex flex-1 justify-center space-x-6 -ml-26">
-          <Link
-            to="/"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Home
-          </Link>
-          <Link
-            to="#"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Features
-          </Link>
-          <Link
-            to="#"
-            className="text-white hover:text-gray-300 transition duration-200"
-            onClick={() =>
-              document.getElementById('article')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Article
-          </Link>
-        </div>
-        <div className="md:hidden absolute right-4">
-          <HamburgerMenu />
-        </div>
-      </nav>
+  className={`fixed top-0 left-1/2 -translate-x-1/2 mt-5 w-[90%] max-w-7xl z-50 px-4 md:px-10 py-4 rounded-2xl shadow-lg flex items-center transition-all duration-300 ${scrolled
+    ? 'bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-lg text-white'
+    : 'bg-[#6149b1] text-white'
+  }`}
+>
+  <div className="flex items-center space-x-2">
+    <img
+      src={logo2}
+      alt="Focusify Logo"
+      className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full"
+    />
+    <span className="text-lg md:text-xl font-bold">
+      Focusify
+    </span>
+  </div>
+
+  {/* Menu Tengah */}
+  <div className="hidden md:flex justify-center space-x-6 mx-auto -mr-4">
+    <Link
+      to="/"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
+      }
+    >
+      Home
+    </Link>
+    <Link
+      to="#"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+      }
+    >
+      Features
+    </Link>
+    <Link
+      to="#"
+      className="text-white hover:text-gray-300 transition duration-200"
+      onClick={() =>
+        document.getElementById('article')?.scrollIntoView({ behavior: 'smooth' })
+      }
+    >
+      Article
+    </Link>
+  </div>
+
+  {/* Tombol Sebelah Kanan */}
+  <div className="hidden md:flex ml-auto">
+    <Link
+      to="/nameinput"
+      className="bg-black text-[#6149b1] font-semibold px-6 py-3 rounded-xl shadow-lg transition-all"
+    >
+      Coba Pomodoro
+    </Link>
+  </div>
+
+  {/* Hamburger Mobile */}
+  <div className="md:hidden absolute right-4">
+    <HamburgerMenu />
+  </div>
+</nav>
+
       {/* Hero Section */}
       <div
         id="hero"
@@ -294,13 +310,6 @@ const LandingPage = () => {
             className="mt-7 text-lg md:text-xl text-white"
           />
           <div className="flex justify-center mt-8 space-x-4">
-            <Link
-              to="/nameinput"
-              className="bg-black text-[#6149b1] font-semibold px-6 py-3 rounded-xl shadow-lg transition-all "
-            >
-              Coba Pomodoro
-            </Link>
-
             <a
               href="https://play.google.com/store/apps/details?id=com.focusify.app"
               className="bg-[#000000] hover:bg-[#000000] text-white text-base font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300"
@@ -361,7 +370,7 @@ const LandingPage = () => {
 
         </div>
       </div>
-
+      <PreviewSection />
       <IntroductionSection />
 
       <FeatureSection />
