@@ -90,7 +90,7 @@ const HamburgerMenu = () => {
             <li className="px-4 py-1">
               <button
                 className="w-full text-left rounded-md px-4 py-2 transition-colors duration-200
-                bg-white text-black shadow
+                bg-blue-600 text-white shadow
                 hover:bg-gray-200 dark:bg-white dark:text-black"
                 onClick={handlePomodoroClick}
               >
