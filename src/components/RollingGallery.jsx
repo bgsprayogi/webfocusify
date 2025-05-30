@@ -1,151 +1,128 @@
-import { useEffect, useState } from "react";
+// RollingGallery.jsx
 
-import image1 from '../assets/image1.png';
-import image2 from '../assets/image2.png';
-import image3 from '../assets/image3.png';
-import image4 from '../assets/image4.png';
-import image5 from '../assets/image5.png';
+import { useRef, useEffect, useState } from "react";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
 
-import {
-  motion,
-  useMotionValue,
-  useAnimation,
-  useTransform,
-} from "framer-motion";
+const testimonials = [
+  {
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Focusifyers",
+    text: "Dark modenya bagus, tampilan jadi lebih enak dilihat, kesan juga lebih matang aplikasinya. Pilihan suara meditasi udah banyak, tinggal pilih yang sesuai selera.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/men/33.jpg",
+    name: "Focusifyers",
+    text: "Bisa curhat ke laras tentang kegiatan yang dilakukan sehari-harinya tanpa diketahui orang lain, rasanya lega banget bisa mencatat semua yang telah saya lalui apalagi laras menyediakan fitur suara relaksasi yang bisa membuat saya lebih tenang ketika jenuh.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/men/44.jpg",
+    name: "Focusifyers",
+    text: "Saya menyukai aplikasi ini karena salah satunya terdapat fitur mode gelap karena menurut saya cocok banget sesuai dengan topiknya yaitu meditasi, lalu untuk fitur audio nya bisa didengar sambil keluar dari app.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/women/55.jpg",
+    name: "Focusifyers",
+    text: "Aplikasinya bagus unik, bisa menyampaikan perasaan kita lewat jurnal lebih bisa mengekspresikan diri aja, merasa seperti disediakan wadah untuk melepas ekspresi.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Focusifyers",
+    text: "Dark modenya bagus, tampilan jadi lebih enak dilihat, kesan juga lebih matang aplikasinya. Pilihan suara meditasi udah banyak, tinggal pilih yang sesuai selera.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Focusifyers",
+    text: "Dark modenya bagus, tampilan jadi lebih enak dilihat, kesan juga lebih matang aplikasinya. Pilihan suara meditasi udah banyak, tinggal pilih yang sesuai selera.",
+  }
+];
 
-const IMGS = [image1, image2, image3, image4, image5,image1, image2, image3, image4, image5];
+const GAP = 24;
 
-
-const RollingGallery = ({
-  autoplay = false,
-  pauseOnHover = false,
-  images = [],
-}) => {
-  images = images.length > 0 ? images : IMGS;
-
-  const [isScreenSizeSm, setIsScreenSizeSm] = useState(
-    window.innerWidth <= 640
-  );
-  useEffect(() => {
-    const handleResize = () => setIsScreenSizeSm(window.innerWidth <= 640);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // 3D geometry
-  const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
-  const faceCount = images.length;
-  const faceWidth = (cylinderWidth / faceCount) * 1.5;
-  const radius = cylinderWidth / (2 * Math.PI);
-
-  // Framer Motion
-  const dragFactor = 0.05;
-  const rotation = useMotionValue(0);
+export default function RollingGallery({ speed = 60, pauseOnHover = true }) {
   const controls = useAnimation();
+  const x = useMotionValue(0);
+  const trackRef = useRef(null);
+  const items = [...testimonials, ...testimonials];
+  const [width, setWidth] = useState(0);
 
-  // Convert rotation -> 3D transform
-  const transform = useTransform(
-    rotation,
-    (val) => `rotate3d(0,1,0,${val}deg)`
-  );
+  // Hitung lebar satu loop (setengah scrollWidth)
+  useEffect(() => {
+    if (!trackRef.current) return;
+    setWidth(trackRef.current.scrollWidth / 2);
+  }, [items.length]);
 
-  const startInfiniteSpin = (startAngle) => {
+  // Fungsi memulai loop dari posisi x tertentu
+  const startLoop = (fromX = 0) => {
     controls.start({
-      rotateY: [startAngle, startAngle - 360],
+      x: [fromX, fromX - width],
       transition: {
-        duration: 20,
-        ease: "linear",
-        repeat: Infinity,
+        x: {
+          repeat: Infinity,
+          ease: "linear",
+          duration: width / speed,
+        },
       },
     });
   };
 
+  // Inisialisasi loop saat width tersedia
   useEffect(() => {
-    if (autoplay) {
-      const currentAngle = rotation.get();
-      startInfiniteSpin(currentAngle);
-    } else {
-      controls.stop();
+    if (width > 0) {
+      x.set(0);
+      startLoop(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoplay]);
+  }, [width]);
 
-  const handleUpdate = (latest) => {
-    if (typeof latest.rotateY === "number") {
-      rotation.set(latest.rotateY);
-    }
-  };
-
-  const handleDrag = (_, info) => {
+  // Pause / Resume tanpa jump
+  const handlePause = () => {
     controls.stop();
-    rotation.set(rotation.get() + info.offset.x * dragFactor);
   };
-
-  const handleDragEnd = (_, info) => {
-    const finalAngle = rotation.get() + info.velocity.x * dragFactor;
-    rotation.set(finalAngle);
-
-    if (autoplay) {
-      startInfiniteSpin(finalAngle);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (autoplay && pauseOnHover) {
-      controls.stop();
-    }
-  };
-  const handleMouseLeave = () => {
-    if (autoplay && pauseOnHover) {
-      const currentAngle = rotation.get();
-      startInfiniteSpin(currentAngle);
-    }
+  const handleResume = () => {
+    const current = x.get() % -width;
+    const fromX = current > 0 ? current - width : current;
+    startLoop(fromX);
   };
 
   return (
-    <div className="relative h-[500px] w-full overflow-hidden">
-
-      <div className="flex h-full items-center justify-center [perspective:1000px] [transform-style:preserve-3d]">
-        <motion.div
-          drag="x"
-          dragElastic={0}
-          onDrag={handleDrag}
-          onDragEnd={handleDragEnd}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          animate={controls}
-          onUpdate={handleUpdate}
-          style={{
-            transform: transform,
-            rotateY: rotation,
-            width: cylinderWidth,
-            transformStyle: "preserve-3d",
-          }}
-          className="flex min-h-[200px] cursor-grab items-center justify-center [transform-style:preserve-3d]"
-        >
-          {images.map((url, i) => (
-            <div
-              key={i}
-              className="group absolute flex h-fit items-center justify-center p-[8%] [backface-visibility:hidden] md:p-[6%]"
-              style={{
-                width: `${faceWidth}px`,
-                transform: `rotateY(${(360 / faceCount) * i
-                  }deg) translateZ(${radius}px)`,
-              }}
-            >
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ height: 230 }}
+      onMouseEnter={() => pauseOnHover && handlePause()}
+      onMouseLeave={() => pauseOnHover && handleResume()}
+      onTouchStart={() => pauseOnHover && handlePause()}
+      onTouchEnd={() => pauseOnHover && handleResume()}
+    >
+      <motion.div
+        className="flex gap-6"
+        ref={trackRef}
+        style={{ x }}
+        animate={controls}
+      >
+        {items.map((item, i) => (
+          <div
+            key={i}
+            className="flex flex-col bg-[#5E548E] rounded-2xl px-6 py-5 text-white shadow-xl min-w-[250px] max-w-[360px] w-[80vw] sm:w-[340px] md:w-[320px] lg:w-[340px] flex-shrink-0"
+            style={{ marginRight: i === items.length - 1 ? 0 : GAP }}
+          >
+            <div className="flex items-center mb-2 gap-3">
               <img
-                src={url}
-                alt="gallery"
-                className="pointer-events-none h-[400px] w-[270px] rounded-[15px] border-[3px] border-white object-cover
-                transition-transform duration-300 ease-out group-hover:scale-105
-                sm:h-[320px] sm:w-[216px]"
+                src={item.avatar}
+                alt={item.name}
+                className="w-10 h-10 rounded-full bg-white border-2 border-white shadow"
               />
+              <span className="font-bold text-lg">{item.name}</span>
             </div>
-          ))}
-        </motion.div>
-      </div>
+            <p className="text-sm leading-relaxed whitespace-pre-line">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Fade overlays */}
+      <div className="pointer-events-none absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#423561] to-transparent" />
+      <div className="pointer-events-none absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#423561] to-transparent" />
     </div>
   );
-};
-
-export default RollingGallery;
+}

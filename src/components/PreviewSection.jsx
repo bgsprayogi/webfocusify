@@ -2,8 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-// Ganti gambar di sini sesuai kebutuhan
 import preview1 from "../assets/FindMobile.jpg";
 import preview2 from "../assets/study3.png";
 import preview3 from "../assets/logo2.png";
@@ -32,35 +30,41 @@ const PreviewSection = () => {
     };
 
     return (
-        <section className="w-full bg-gradient-to-b from-[#17054e] to-[#462E96] py-24 px-0 flex flex-col items-center">
-            <div className="w-full max-w-4xl mx-auto relative">
-                <Slider {...settings}>
-                    {previewImages.map((item, idx) => (
-                        <div key={idx} className="flex justify-center">
-                            <div
-                                className="
-                  w-full
-                  max-w-[900px]
-                  aspect-[16/9]
-                  rounded-3xl overflow-hidden shadow-2xl
-                  bg-white/10 backdrop-blur-xl
-                  border border-white/20
-                  flex items-center justify-center
-                "
-                            >
+        <section className="w-full bg-gradient-to-b from-[#17054e] to-[#462E96] py-6 sm:py-14 flex flex-col items-center">
+            <div className="w-full flex justify-center px-2 sm:px-0">
+                <div
+                    className="
+            w-full
+            max-w-[900px]
+            aspect-[16/9]
+            rounded-xl sm:rounded-3xl
+            overflow-hidden
+            shadow-2xl
+            bg-white/10
+            backdrop-blur-xl
+            border border-white/20
+            flex items-center justify-center
+            transition-all
+          "
+                >
+                    <Slider {...settings} className="w-full h-full">
+                        {previewImages.map((item, idx) => (
+                            <div key={idx} className="w-full h-full flex items-center justify-center">
                                 <img
                                     src={item.src}
                                     alt={item.alt}
-                                    className="
-                    w-full h-full object-cover
-                    transition-all duration-700
-                "
+                                    className="w-full h-auto max-h-full object-cover"
                                     draggable={false}
+                                    style={{
+                                        minWidth: 0,
+                                        minHeight: 0,
+                                        aspectRatio: "16/9",
+                                    }}
                                 />
                             </div>
-                        </div>
-                    ))}
-                </Slider>
+                        ))}
+                    </Slider>
+                </div>
             </div>
         </section>
     );

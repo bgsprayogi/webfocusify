@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import ScrollFloat from "../components/ScrollFloat";
 import SplitText from "../components/SplitText";
+import RollingGallery from "../components/RollingGallery";
 import BlurText from "../components/BlurText";
 import ImageSlider from "../components/ImageSlider";
 import FeatureSection from '../components/FeatureSection';
 import PreviewSection from '../components/PreviewSection';
 import IntroductionSection from '../components/IntroductionSection';
 import HamburgerMenu from '../components/HamburgerMenu';
+
 import logo2 from "../assets/logo2.png";
 import studyImage from "../assets/study1.webp";
 import studyImage2 from "../assets/study2.png";
@@ -107,104 +109,6 @@ const FindUsSection = () => {
     </div>
   );
 };
-
-
-const articles = [
-  {
-    title: "Susah Belajar? Coba Trik Ini! Rahasia Belajar Efektif, Nilai Pasti Naik!",
-    date: "5 Maret 2025",
-    image: studyImage,
-    description:
-      "Belajar secara efektif tidak hanya tentang berapa lama waktu yang dihabiskan untuk belajar...",
-    link: "https://banyuwangi.viva.co.id/gaya-hidup/25782-susah-belajar-coba-trik-ini-rahasia-belajar-efektif-nilai-pasti-naik",
-  },
-  {
-    title: "Tips Fokus Saat Bekerja",
-    date: "10 September 2024",
-    image: studyImage2,
-    description:
-      "Pelajari cara meningkatkan fokus dan produktivitas dengan teknik yang telah terbukti ampuh...",
-    link: "https://gajihub.com/blog/cara-meningkatkan-fokus-kerja/",
-  },
-  {
-    title: "Manfaat Mode DnD",
-    date: "6 November 2024",
-    image: studyImage3,
-    description:
-      "Ketahui bagaimana mode DnD membantu kamu bekerja lebih efektif dengan mengurangi distraksi...",
-    link: "https://www.kompasiana.com/dewafreelance30404/672accb5ed64157439795e32/5-cara-fokus-saat-bekerja#:~:text=Berikut%20adalah%20lima%20cara%20efektif%20untuk%20menjaga%20fokus,Media%20Sosial%20...%205%205.%20Lakukan%20Olahraga%20Ringan",
-  },
-];
-
-const ArticleSection = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-        }
-      }
-    ]
-  };
-
-  return (
-    <div id="article" className="w-full bg-gradient-to-b from-[#462E96] to-[#31385c] py-20 px-6">
-      <div className="max-w-screen-xl mx-auto text-white">
-        <ScrollFloat
-          animationDuration={1}
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
-          stagger={0.03}
-          textClassName="text-center text-4xl font-bold mb-10 text-white"
-        >
-          Article
-        </ScrollFloat>
-
-          <Slider {...settings}>
-    {articles.map((article, index) => (
-      <div key={index} className="px-4">
-        <div className="bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 h-auto min-h-[450px]">
-          
-          <img src={article.image} alt={article.title} className="w-full h-52 object-cover" />
-          <div className="p-6 text-black">
-            <p className="text-gray-500 text-sm">{article.date}</p>
-            <h3 className="text-xl font-semibold mt-2">{article.title}</h3>
-            <p className="text-sm mt-2">{article.description}</p>
-            <a
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClickCapture={(e) => e.stopPropagation()}
-              style={{ color: '#4f46e5' }} /* Force indigo-600 color */
-              className="!text-indigo-600 font-medium mt-4 inline-block hover:!text-indigo-800 hover:underline"
-            >
-              Baca Selengkapnya
-            </a>
-          </div>
-        </div>
-      </div>
-    ))}
-  </Slider>
-        </div>
-      </div>
-    );
-  };
-
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -261,7 +165,7 @@ const LandingPage = () => {
       to="#"
       className="text-white hover:text-gray-300 transition duration-200"
       onClick={() =>
-        document.getElementById('article')?.scrollIntoView({ behavior: 'smooth' })
+        document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })
       }
     >
       Article
@@ -372,17 +276,17 @@ const LandingPage = () => {
       </div>
       <PreviewSection />
       <IntroductionSection />
-
       <FeatureSection />
-
-
-      <ArticleSection />
-
-
-
+<section
+  id="gallery"
+  className="w-full bg-gradient-to-b from-[#462E96] to-[#31385c] py-20 px-6"
+>
+  <div className="max-w-screen-xl mx-auto text-white">
+    <h2 className="text-center text-4xl font-bold mb-10">Review</h2>
+    <RollingGallery />
+  </div>
+</section>
       <FindUsSection />
-
-
       <Footer />
 
     </div>
